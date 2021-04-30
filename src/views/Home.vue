@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png" />
+        {{ href }}
     </div>
 </template>
 
@@ -9,5 +9,14 @@
 
 export default {
     name: 'Home',
+    data() {
+        return {
+            href: '',
+        };
+    },
+    created() {
+        console.log('home created');
+        this.href = window.location.href;
+    },
 };
 </script>

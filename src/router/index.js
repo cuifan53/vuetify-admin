@@ -2,6 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import AdminLayout from '@/layouts/AdminLayout';
+import BlankView from '@/layouts/BlankView';
+import About from '@/views/About';
 
 Vue.use(VueRouter);
 
@@ -9,33 +11,53 @@ const routes = [
     {
         path: '/',
         component: AdminLayout,
-        redirect: '/index',
+        redirect: '/index/index2',
         children: [
             {
                 path: '/index',
                 name: 'Home',
-                component: Home,
+                component: BlankView,
                 meta: {
                     icon: 'mdi-flag',
                 },
+                children: [
+                    {
+                        path: 'index2',
+                        name: 'Home',
+                        component: Home,
+                        meta: {
+                            icon: 'mdi-flag',
+                        },
+                    },
+                ],
             },
             {
-                path: '/index',
-                name: 'Home',
-                component: Home,
+                path: '/about',
+                name: 'About',
+                component: BlankView,
                 meta: {
                     icon: 'mdi-flag',
                 },
+                children: [
+                    {
+                        path: 'about2',
+                        name: 'About2',
+                        component: Home,
+                        meta: {
+                            icon: 'mdi-flag',
+                        },
+                    },
+                    {
+                        path: 'about3',
+                        name: 'About3',
+                        component: About,
+                        meta: {
+                            icon: 'mdi-flag',
+                        },
+                    },
+                ],
             },
         ],
-    },
-    {
-        path: '/about',
-        name: 'About',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
     },
 ];
 
