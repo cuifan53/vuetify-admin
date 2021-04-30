@@ -1,8 +1,8 @@
 <template>
     <v-app>
-        <admin-header @changeShowMenu="drawer = !drawer"></admin-header>
+        <admin-header @changeShowMenu="showMenu = !showMenu"></admin-header>
 
-        <side-menu :drawer="drawer"></side-menu>
+        <side-menu :show="showMenu"></side-menu>
 
         <v-main>
             <v-container fluid> <router-view /> </v-container>
@@ -19,7 +19,7 @@ export default {
     components: { SideMenu, AdminHeader },
     data() {
         return {
-            drawer: true,
+            showMenu: true,
         };
     },
     methods: {},

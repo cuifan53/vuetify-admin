@@ -8,7 +8,6 @@ Vue.use(VueRouter);
 const routes = [
     {
         path: '/',
-        name: 'Home',
         component: AdminLayout,
         redirect: '/index',
         children: [
@@ -16,6 +15,17 @@ const routes = [
                 path: '/index',
                 name: 'Home',
                 component: Home,
+                meta: {
+                    icon: 'mdi-flag',
+                },
+            },
+            {
+                path: '/index',
+                name: 'Home',
+                component: Home,
+                meta: {
+                    icon: 'mdi-flag',
+                },
             },
         ],
     },
