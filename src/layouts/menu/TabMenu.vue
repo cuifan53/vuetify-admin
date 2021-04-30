@@ -1,8 +1,14 @@
 <template>
-    <v-card elevation="0">
+    <v-card elevation="0" color="transparent">
         <div v-show="false">{{ sideMenuPath }}</div>
-        <v-tabs v-model="activeTab" icons-and-text center-active show-arrows>
-            <v-tabs-slider></v-tabs-slider>
+        <v-tabs
+            v-model="activeTab"
+            hide-slider
+            icons-and-text
+            center-active
+            show-arrows
+            background-color="#eeeeee"
+        >
             <v-tab v-for="(menu, i) in tabMenus" :key="i" @click="tapMenu(menu.path)">
                 {{ menu.name }}
                 <v-icon>{{ menu.icon }}</v-icon>

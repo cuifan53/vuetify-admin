@@ -5,8 +5,8 @@
         <side-menu :show="showMenu"></side-menu>
 
         <v-main>
-            <v-container fluid>
-                <tab-menu style="margin-bottom: 10px"></tab-menu>
+            <v-container fluid style="background: #eeeeee">
+                <tab-menu></tab-menu>
                 <router-view />
             </v-container>
         </v-main>
@@ -26,7 +26,6 @@ export default {
             showMenu: true,
         };
     },
-    methods: {},
 };
 </script>
 
