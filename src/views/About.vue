@@ -1,39 +1,32 @@
 <template>
-    <div>
-        <card-container>
-            <div>
-                <v-btn-toggle class="btn-toggle" dense borderless>
-                    <v-btn color="#FFFFFF"> <v-icon left>mdi-add</v-icon> 新增 </v-btn>
-                    <v-btn color="#FFFFFF"> <v-icon left>mdi-refresh</v-icon>刷新 </v-btn>
-                    <v-btn color="#FFFFFF"> <v-icon left>mdi-download</v-icon>下载 </v-btn>
-                </v-btn-toggle>
+    <card-container>
+        <standard-table
+            btn-filter
+            btn-add
+            btn-refresh
+            btn-download
+            dense
+            :headers="headers"
+            :items="desserts"
+            @btnAdd="onAdd"
+            @btnRefresh="onRefresh"
+        >
+            <div slot="tableFilter">
+                <v-btn text @click="tapAdd"> 确认 </v-btn>
             </div>
-
-            <v-divider></v-divider>
-
-            <v-data-table
-                :height="tableHeight"
-                dense
-                disable-pagination
-                hide-default-footer
-                fixed-header
-                :headers="headers"
-                :items="desserts"
-                item-key="name"
-                class="elevation-1"
-            ></v-data-table>
-            <v-pagination slot="footer" v-model="page" :length="6"></v-pagination>
-        </card-container>
-    </div>
+        </standard-table>
+        <v-pagination slot="footer" v-model="page" :length="6"></v-pagination>
+    </card-container>
 </template>
 
 <script>
 // @ is an alias to /src
 
 import CardContainer from '@/components/CardContainer';
+import StandardTable from '@/components/table/StandardTable';
 export default {
     name: 'About',
-    components: { CardContainer },
+    components: { StandardTable, CardContainer },
     data() {
         return {
             href: '',
@@ -232,6 +225,12 @@ export default {
                 { text: 'Protein (g)', value: 'protein' },
                 { text: 'Iron (%)', value: 'iron' },
             ],
+            items2: [
+                { title: 'Click Me' },
+                { title: 'Click Me' },
+                { title: 'Click Me' },
+                { title: 'Click Me 2' },
+            ],
         };
     },
     created() {
@@ -239,12 +238,19 @@ export default {
         this.href = window.location.href;
         this.tableHeight = document.documentElement.clientHeight - 198 - 56;
     },
+    methods: {
+        onAdd() {
+            console.log('add');
+        },
+        onRefresh() {
+            console.log('refresh');
+        },
+        onDownload() {},
+        tapAdd() {
+            console.log('filter tapped');
+        },
+    },
 };
 </script>
 
-<style scoped>
-.btn-toggle {
-    margin: 10px;
-    box-shadow: 10px 5px 5px #bdbdbd;
-}
-</style>
+<style scoped></style>
