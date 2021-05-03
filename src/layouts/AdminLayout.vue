@@ -5,10 +5,10 @@
         <side-menu :show="showMenu"></side-menu>
 
         <v-main>
-            <v-container fluid style="background: #eeeeee">
+            <v-card flat class="container" :height="containerHeight">
                 <tab-menu></tab-menu>
                 <router-view />
-            </v-container>
+            </v-card>
         </v-main>
     </v-app>
 </template>
@@ -24,9 +24,24 @@ export default {
     data() {
         return {
             showMenu: true,
+            containerHeight: 0,
         };
+    },
+    created() {
+        this.getContainerHeight();
+    },
+    methods: {
+        getContainerHeight() {
+            const clientHeight = document.documentElement.clientHeight;
+            this.containerHeight = clientHeight - 48;
+        },
     },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+    padding: 0 8px;
+    background: #eeeeee;
+}
+</style>

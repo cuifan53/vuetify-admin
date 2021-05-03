@@ -1,7 +1,10 @@
 <template>
-    <v-card elevation="24" style="margin: 10px 0" :height="containerHeight">
-        <slot></slot>
-    </v-card>
+    <div>
+        <v-card elevation="24" :height="containerHeight" style="margin-bottom: 12px">
+            <slot></slot>
+        </v-card>
+        <slot name="footer"></slot>
+    </div>
 </template>
 
 <script>
@@ -18,7 +21,7 @@ export default {
     methods: {
         getContainerHeight() {
             const clientHeight = document.documentElement.clientHeight;
-            this.containerHeight = clientHeight - 196;
+            this.containerHeight = clientHeight - 198;
         },
     },
 };
